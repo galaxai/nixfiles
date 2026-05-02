@@ -1,0 +1,24 @@
+background = #282c34
+background-blur-radius = 0
+background-opacity = 0.900000
+cursor-color = #dcdfe4
+cursor-style = block
+cursor-text = #282c34
+font-family = 0xProto Nerd Font Mono
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+foreground = #dcdfe4
+keybind = cmd+c=copy_to_clipboard
+scrollback-limit = 10000
+selection-background = #5d677a
+selection-foreground = #dcdfe4
+shell-integration-features = ssh-terminfo
+shell-integration-features = ssh-env
+unfocused-split-opacity = 0.950000
+window-decoration = true
+window-height = 32
+window-padding-x = 8
+window-padding-y = 8
+window-width = 128
+window-height = 40

@@ -1,0 +1,73 @@
+{
+  "ssh_connections": [
+    {
+      "host": "fedora",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/billy"
+          ]
+        }
+      ]
+    }
+  ],
+  "auto_install_extensions": {
+    "jetbrains-new-ui-icons": true,
+    "nix": true,
+    "one-dark-pro": true,
+    "svelte": true,
+    "toml": true
+  },
+  "buffer_font_size": 14,
+  "collaboration_panel": {
+    "button": false
+  },
+  "format_on_save": "off",
+  "icon_theme": {
+    "dark": "JetBrains New UI Icons (Dark)",
+    "light": "JetBrains New UI Icons (Light)",
+    "mode": "system"
+  },
+  "languages": {
+    "Python": {
+      "format_on_save": "on",
+      "language_servers": [
+        "ty",
+        "!basedpyright",
+        "..."
+      ]
+    }
+  },
+  "outline_panel": {
+    "button": false
+  },
+  "project_panel": {
+    "indent_size": 15
+  },
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": true
+  },
+  "terminal": {
+    "blinking": "on",
+    "default_width": 512,
+    "dock": "right",
+    "font_size": 12
+  },
+  "theme": {
+    "dark": "One Dark Pro",
+    "light": "One Light",
+    "mode": "system"
+  },
+  "theme_overrides": {
+    "One Dark Pro": {
+      "syntax": {
+        "string.doc": {
+          "color": "#d19a66ff"
+        }
+      }
+    }
+  },
+  "ui_font_size": 14
+}

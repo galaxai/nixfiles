@@ -1,0 +1,5 @@
+result/
+
+
+**/zed/*
+!**/zed/*.json
