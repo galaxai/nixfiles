@@ -15,8 +15,9 @@
   environment.systemPackages = with pkgs; [
     bashInteractive
     neovim
+    tailscale
   ];
-
+  services.tailscale.enable = true;
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
