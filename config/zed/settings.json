@@ -1,4 +1,12 @@
 {
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "ssh_connections": [
     {
       "host": "fedora",
@@ -21,6 +29,7 @@
   },
   "buffer_font_size": 14,
   "collaboration_panel": {
+    "dock": "left",
     "button": false
   },
   "format_on_save": "off",
@@ -40,9 +49,11 @@
     }
   },
   "outline_panel": {
+    "dock": "left",
     "button": false
   },
   "project_panel": {
+    "dock": "left",
     "indent_size": 15
   },
   "telemetry": {
