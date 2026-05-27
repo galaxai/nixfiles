@@ -6,6 +6,7 @@
     pre-commit
     uv
     bun
+    nodejs
     nil
     nixd
   ];

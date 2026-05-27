@@ -43,6 +43,17 @@ in
       user.name = "GalaxAI";
       user.email = "92019780+GalaxAI@users.noreply.github.com";
     };
+    includes = [
+      {
+        condition = "gitdir:~/work/";
+        contents = {
+          user = {
+            name = "simon-bll";
+            email = "szymon.hawryluk@bluelabellabs.com";
+          };
+        };
+      }
+    ];
   };
 
   programs.home-manager.enable = true;
