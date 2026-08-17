@@ -51,13 +51,9 @@ in
     };
     includes = [
       {
+        # Work identity lives outside the repo; git skips this include if the file is missing.
         condition = "gitdir:~/work/";
-        contents = {
-          user = {
-            name = "simon-bll";
-            email = "szymon.hawryluk@bluelabellabs.com";
-          };
-        };
+        path = "~/.config/git/work";
       }
     ];
   };
