@@ -5,6 +5,10 @@ let
   mkOutOfStore = config.lib.file.mkOutOfStoreSymlink;
 
   sharedConfigs = {
+    "nix/nix.conf" = {
+      target = "nix/nix.conf";
+      recursive = false;
+    };
     zed = {
       target = "zed";
       recursive = true;
@@ -22,6 +26,7 @@ in
 {
   imports = [
     ./home-manager/terminal.nix
+    ./home-manager/fastfetch
     ./home-manager/programming.nix
     ./home-manager/fonts.nix
     ./home-manager/zen-browser.nix

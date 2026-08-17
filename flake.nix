@@ -9,6 +9,11 @@
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    plasma-manager.url = "github:nix-community/plasma-manager";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.inputs.home-manager.follows = "home-manager";
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,9 +46,9 @@
       linuxHomeModule = {
         imports = [
           ./modules/shared/home.nix
-          ./modules/linux/home-manager/work-slop.nix
+          inputs.plasma-manager.homeModules.plasma-manager
           ./modules/linux/home-manager/discord.nix
-          ./modules/linux/desktops/plasma.nix
+          ./modules/linux/desktops/plasma/plasma.nix
         ];
 
         home.username = "billy";
@@ -55,6 +60,7 @@
         imports = [
           ./modules/shared/home.nix
           ./modules/darwin/home-manager/shell.nix
+          ./modules/darwin/home-manager/discord.nix
         ];
 
         home.username = "apple";

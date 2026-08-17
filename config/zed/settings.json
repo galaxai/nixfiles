@@ -1,4 +1,21 @@
 {
+  "agent_servers": {
+    "claude-acp": {
+      "default_config_options": {
+        "effort": "high",
+        "mode": "bypassPermissions",
+        "model": "opus[1m]"
+      },
+      "favorite_config_option_values": {
+        "model": [
+          "opus[1m]",
+          "claude-opus-4-8"
+        ]
+      },
+      "type": "registry"
+    }
+  },
+  "cli_default_open_behavior": "new_window",
   "agent": {
     "dock": "right",
     "favorite_models": [],
@@ -15,6 +32,11 @@
         {
           "paths": [
             "/home/billy"
+          ]
+        },
+        {
+          "paths": [
+            "/home/billy/projects/chembl_ai"
           ]
         }
       ]
