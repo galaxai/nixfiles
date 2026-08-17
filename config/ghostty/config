@@ -5,6 +5,7 @@ cursor-color = #dcdfe4
 cursor-style = block
 cursor-text = #282c34
 font-family = 0xProto Nerd Font Mono
+font-size = 10
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig

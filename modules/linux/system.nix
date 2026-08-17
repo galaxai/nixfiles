@@ -1,7 +1,11 @@
 { pkgs, ... }:
 
 {
-  imports = [ ../../hardware-configuration.nix ];
+  imports = [
+    ../../hardware-configuration.nix
+    ./programs/_1password.nix
+    ./programs/gaming.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -40,6 +44,23 @@
   };
 
   console.keyMap = "pl2";
+
+
+  # This is a desktop: do not enter any system sleep state automatically or
+  # through dedicated suspend/hibernate keys.
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = false;
+    AllowHibernation = false;
+    AllowHybridSleep = false;
+    AllowSuspendThenHibernate = false;
+  };
+
+  services.logind.settings.Login = {
+    IdleAction = "ignore";
+    HandleSuspendKey = "ignore";
+    HandleHibernateKey = "ignore";
+  };
+
   services.printing.enable = true;
 
   services.pulseaudio.enable = false;
@@ -76,5 +97,5 @@
 
   services.tailscale.enable = true;
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }
