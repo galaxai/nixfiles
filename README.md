@@ -1,26 +1,43 @@
-> Hi those are my personal nix/dot files
+# nixfiles
 
-They are ment to be used for darwin systems (my laptop) and \
-nixos systems soon to be my main pc.
+My personal, unified Nix configuration for macOS and NixOS.
 
-[!NOTE]
+## Systems
 
-Linux part of nix files wasn't tested yet as it was copy pasted from old nixos machine.
+- **macOS** (`aarch64-darwin`) using nix-darwin and Home Manager.
+  Flake output: `.#darwin`
+- **NixOS** (`x86_64-linux`) using Home Manager and Plasma Manager.
+  Flake output: `.#nixos`
 
-# Installation
+This repository is tailored to my machines and user accounts rather than being
+a general-purpose Nix configuration.
 
-1. > Burn usb with [caligula](https://github.com/ifd3f/caligula)
-```bash
-caligula burn <path>
+## Apply the configuration
+
+Clone the repository and run the command for the target system.
+
+### macOS
+
+Install Nix first. For the initial nix-darwin installation, run:
+
+```sh
+sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#darwin
 ```
-2. Install nix on your disctro of choice
-3. Enable flakes
-```bash
-#/etc/nix/nix.conf
-experimental-features = nix-command flakes
+
+For subsequent rebuilds:
+
+```sh
+sudo darwin-rebuild switch --flake .#darwin
 ```
-4. Install home-manager
-5. Install packges
-```bash
-sudo <darwin|nixos>-rebuild switch --flake .#<darwin|nixos>
+
+### NixOS
+
+```sh
+sudo nixos-rebuild switch --flake .#nixos
+```
+
+## Update dependencies
+
+```sh
+nix flake update
 ```
