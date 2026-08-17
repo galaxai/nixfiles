@@ -19,6 +19,11 @@
       url = "github:schembriaiden/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-t3code = {
+      url = "github:limwa/nix-t3code";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

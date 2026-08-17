@@ -26,6 +26,7 @@ in
     ./home-manager/fonts.nix
     ./home-manager/zen-browser.nix
     ./home-manager/helium-browser.nix
+    ./home-manager/t3code.nix
   ];
 
   xdg.configFile =
