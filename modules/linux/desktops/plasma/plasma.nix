@@ -9,6 +9,24 @@
       lookAndFeel = "org.kde.breezedark.desktop";
     };
 
+    # Flat pointer acceleration profile (raw 1:1 mouse input).
+    # KDE matches devices by exact name/vendor/product, so both mice
+    # are listed; the Bridge75 name really has two leading spaces.
+    input.mice = [
+      {
+        name = "  Bridge75 Mouse";
+        vendorId = "fffe";
+        productId = "003e";
+        accelerationProfile = "none";
+      }
+      {
+        name = "ATTACK SHARK R6 Mouse";
+        vendorId = "373e";
+        productId = "0021";
+        accelerationProfile = "none";
+      }
+    ];
+
     kscreenlocker = {
       autoLock = false;
       lockOnResume = false;
