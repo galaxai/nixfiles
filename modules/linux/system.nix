@@ -45,45 +45,6 @@
 
   console.keyMap = "pl2";
 
-  services.keyd = {
-    enable = true;
-    keyboards.bridge75 = {
-      ids = [ "fffe:003e" ];
-      settings = {
-        main = {
-          # macOS bottom row: Control, Option (Windows), Command (Alt).
-          leftalt = "layer(command)";
-          leftmeta = "layer(option)";
-        };
-
-        "command:M" = {
-          # Keep copy/paste/cut usable in both graphical apps and terminals.
-          c = "C-insert";
-          v = "S-insert";
-          x = "S-delete";
-
-          # Match macOS navigation and KDE application switching.
-          left = "home";
-          right = "end";
-          up = "C-home";
-          down = "C-end";
-          space = "A-space";
-          tab = "A-tab";
-          grave = "A-grave";
-        };
-
-        "option:A" = {
-          left = "C-left";
-          right = "C-right";
-          up = "C-up";
-          down = "C-down";
-          backspace = "C-backspace";
-          delete = "C-delete";
-        };
-      };
-    };
-  };
-
   # This is a desktop: do not enter any system sleep state automatically or
   # through dedicated suspend/hibernate keys.
   systemd.sleep.settings.Sleep = {
