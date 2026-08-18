@@ -56,7 +56,7 @@
           leftmeta = "layer(option)";
         };
 
-        "command:C" = {
+        "command:M" = {
           # Keep copy/paste/cut usable in both graphical apps and terminals.
           c = "C-insert";
           v = "S-insert";
