@@ -48,6 +48,7 @@
           ./modules/shared/home.nix
           inputs.plasma-manager.homeModules.plasma-manager
           ./modules/linux/home-manager/discord.nix
+          ./modules/linux/home-manager/ssh.nix
           ./modules/linux/desktops/plasma/plasma.nix
         ];
 
