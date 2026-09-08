@@ -29,6 +29,11 @@
       url = "github:limwa/nix-t3code";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-codex-cli = {
+      url = "github:sadjow/codex-cli-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
