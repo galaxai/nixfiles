@@ -48,6 +48,8 @@ in
     settings = {
       user.name = "GalaxAI";
       user.email = "92019780+GalaxAI@users.noreply.github.com";
+      # `git url` opens the current repo/branch on GitHub in the browser.
+      alias.url = "!gh browse";
     };
     includes = [
       {
@@ -56,6 +58,11 @@ in
         path = "~/.config/git/work";
       }
     ];
+  };
+
+  programs.gh = {
+    enable = true;
+    settings.git_protocol = "ssh";
   };
 
   programs.home-manager.enable = true;
