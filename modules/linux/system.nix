@@ -84,6 +84,7 @@
 
   environment.systemPackages = with pkgs; [
     neovim
+    unrar
   ];
 
   programs.nix-ld.enable = true;
