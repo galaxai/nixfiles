@@ -86,6 +86,7 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.backupFileExtension = "backup";
+            home-manager.overwriteBackup = true;
             home-manager.users.billy = linuxHomeModule;
           }
         ];
