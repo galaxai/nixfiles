@@ -82,6 +82,16 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.overlays = [
+    (_final: prev: {
+      kdePackages = prev.kdePackages.overrideScope (_kfinal: kprev: {
+        spectacle = kprev.spectacle.override {
+          tesseractLanguages = [ "eng" "pol" ];
+        };
+      });
+    })
+  ];
+
   environment.systemPackages = with pkgs; [
     neovim
     unrar
