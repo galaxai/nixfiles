@@ -10,6 +10,7 @@
       bat
       tree
       wget
+      cloudflared
       bash-completion
       starship
       eza
