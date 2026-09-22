@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
@@ -11,10 +11,24 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix = {
+    # Keep the desktop responsive while builds compete for CPU and disk access.
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedClass = "idle";
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      auto-optimise-store = true;
+    };
+    registry.nixpkgs.flake = inputs.nixpkgs;
+  };
+
+  programs.nh = {
+    enable = true;
+    flake = "/home/billy/nixfiles";
+  };
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -84,11 +98,16 @@
 
   nixpkgs.overlays = [
     (_final: prev: {
-      kdePackages = prev.kdePackages.overrideScope (_kfinal: kprev: {
-        spectacle = kprev.spectacle.override {
-          tesseractLanguages = [ "eng" "pol" ];
-        };
-      });
+      kdePackages = prev.kdePackages.overrideScope (
+        _kfinal: kprev: {
+          spectacle = kprev.spectacle.override {
+            tesseractLanguages = [
+              "eng"
+              "pol"
+            ];
+          };
+        }
+      );
     })
   ];
 

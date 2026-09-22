@@ -36,6 +36,35 @@ sudo darwin-rebuild switch --flake .#darwin
 sudo nixos-rebuild switch --flake .#nixos
 ```
 
+After applying this configuration, you can also use `nh`:
+
+```sh
+nh os switch --hostname nixos
+```
+
+`nh` defaults to `/home/billy/nixfiles`. Automatic generation cleanup is not
+enabled, so rollback retention remains manually managed.
+
+## Format and check
+
+Format the Nix files, excluding the generated hardware configuration:
+
+```sh
+nix fmt
+```
+
+Check formatting, lint with Statix and deadnix, and evaluate the flake on the
+current platform:
+
+```sh
+nix flake check
+```
+
+GitHub Actions runs these same checks on pushes and pull requests, and explicitly
+evaluates the macOS configuration. The generated hardware configuration is
+excluded from formatting and linting. Statix allows dotted option assignments
+to preserve the module style used here.
+
 ## Update dependencies
 
 ```sh

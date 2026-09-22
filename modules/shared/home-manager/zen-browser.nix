@@ -1,4 +1,9 @@
-{ inputs, pkgs, lib, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   isLinux = pkgs.stdenv.hostPlatform.isLinux;
@@ -53,51 +58,50 @@ in
       };
     };
 
-    profiles.default.settings =
-      {
-        "accessibility.force_disabled" = 1;
-        "gfx.webrender.all" = true;
-        "zen.view.use-single-toolbar" = false;
-        "zen.view.sidebar-expanded" = false;
-        "zen.view.compact.enable-at-startup" = false;
+    profiles.default.settings = {
+      "accessibility.force_disabled" = 1;
+      "gfx.webrender.all" = true;
+      "zen.view.use-single-toolbar" = false;
+      "zen.view.sidebar-expanded" = false;
+      "zen.view.compact.enable-at-startup" = false;
 
-        # Toolbar layout mirrored from the macOS profile.  Managed here, so
-        # in-browser toolbar customization is reverted on the next restart.
-        "browser.uiCustomization.state" = builtins.toJSON {
-          placements = {
-            widget-overflow-fixed-list = [ ];
-            unified-extensions-area = [ ];
-            nav-bar = [
-              "back-button"
-              "forward-button"
-              "stop-reload-button"
-              "customizableui-special-spring1"
-              "vertical-spacer"
-              "urlbar-container"
-              "customizableui-special-spring2"
-              "unified-extensions-button"
-              "ublock0_raymondhill_net-browser-action"
-              "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action"
-              "reset-pbm-toolbar-button"
-            ];
-            TabsToolbar = [ "tabbrowser-tabs" ];
-            vertical-tabs = [ ];
-            PersonalToolbar = [
-              "import-button"
-              "personal-bookmarks"
-            ];
-            zen-sidebar-top-buttons = [ "zen-toggle-compact-mode" ];
-            zen-sidebar-foot-buttons = [
-              "downloads-button"
-              "zen-workspaces-button"
-              "zen-create-new-button"
-            ];
-          };
-          currentVersion = 24;
+      # Toolbar layout mirrored from the macOS profile.  Managed here, so
+      # in-browser toolbar customization is reverted on the next restart.
+      "browser.uiCustomization.state" = builtins.toJSON {
+        placements = {
+          widget-overflow-fixed-list = [ ];
+          unified-extensions-area = [ ];
+          nav-bar = [
+            "back-button"
+            "forward-button"
+            "stop-reload-button"
+            "customizableui-special-spring1"
+            "vertical-spacer"
+            "urlbar-container"
+            "customizableui-special-spring2"
+            "unified-extensions-button"
+            "ublock0_raymondhill_net-browser-action"
+            "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action"
+            "reset-pbm-toolbar-button"
+          ];
+          TabsToolbar = [ "tabbrowser-tabs" ];
+          vertical-tabs = [ ];
+          PersonalToolbar = [
+            "import-button"
+            "personal-bookmarks"
+          ];
+          zen-sidebar-top-buttons = [ "zen-toggle-compact-mode" ];
+          zen-sidebar-foot-buttons = [
+            "downloads-button"
+            "zen-workspaces-button"
+            "zen-create-new-button"
+          ];
         };
-      }
-      // lib.optionalAttrs isLinux {
-        "widget.gtk.rounded-bottom-corners.enabled" = false;
+        currentVersion = 24;
       };
+    }
+    // lib.optionalAttrs isLinux {
+      "widget.gtk.rounded-bottom-corners.enabled" = false;
+    };
   };
 }

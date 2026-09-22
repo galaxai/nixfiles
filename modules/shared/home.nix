@@ -34,14 +34,15 @@ in
     ./home-manager/t3code.nix
   ];
 
-  xdg.configFile =
-    lib.mapAttrs'
-      (name: entry:
-        lib.nameValuePair entry.target {
-          source = mkOutOfStore "${configDir}/${if entry.target == "starship.toml" then "starship" else name}";
-          recursive = entry.recursive;
-        })
-      sharedConfigs;
+  xdg.configFile = lib.mapAttrs' (
+    name: entry:
+    lib.nameValuePair entry.target {
+      source = mkOutOfStore "${configDir}/${
+        if entry.target == "starship.toml" then "starship" else name
+      }";
+      inherit (entry) recursive;
+    }
+  ) sharedConfigs;
 
   programs.git = {
     enable = true;
