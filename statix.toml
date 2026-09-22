@@ -1,0 +1,4 @@
+# Dotted option assignments are intentional in NixOS and Home Manager modules.
+disabled = ["repeated_keys"]
+# Maintained by nixos-generate-config.
+ignore = ["hardware-configuration.nix"]

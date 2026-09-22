@@ -42,6 +42,17 @@
     let
       linuxSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
+      forAllSystems = nixpkgs.lib.genAttrs [
+        linuxSystem
+        darwinSystem
+      ];
+
+      formatterFor =
+        system:
+        nixpkgs.legacyPackages.${system}.nixfmt-tree.override {
+          # This file is maintained by nixos-generate-config.
+          settings.excludes = [ "hardware-configuration.nix" ];
+        };
 
       linuxHomeModule = {
         imports = [
@@ -70,6 +81,42 @@
       };
     in
     {
+      formatter = forAllSystems formatterFor;
+
+      checks = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          statix = pkgs.runCommand "statix-check" { nativeBuildInputs = [ pkgs.statix ]; } ''
+            cd ${self}
+            statix check .
+            touch "$out"
+          '';
+
+          deadnix = pkgs.runCommand "deadnix-check" { nativeBuildInputs = [ pkgs.deadnix ]; } ''
+            cd ${self}
+            deadnix --fail --exclude hardware-configuration.nix -- .
+            touch "$out"
+          '';
+
+          formatting =
+            pkgs.runCommand "nix-formatting-check"
+              {
+                nativeBuildInputs = [ (formatterFor system) ];
+              }
+              ''
+                cp -r ${self} source
+                chmod -R u+w source
+                cd source
+                export HOME="$TMPDIR"
+                treefmt --ci --tree-root . --walk filesystem
+                touch "$out"
+              '';
+        }
+      );
+
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = linuxSystem;
         specialArgs = { inherit self inputs; };

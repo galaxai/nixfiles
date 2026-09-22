@@ -43,7 +43,6 @@
     enable = true;
 
     # Plasma uses the text/plain MIME association as its default editor.
-    defaultApplications."text/plain" =
-      lib.mkForce [ "dev.zed.Zed.desktop" ];
+    defaultApplications."text/plain" = lib.mkForce [ "dev.zed.Zed.desktop" ];
   };
 }
