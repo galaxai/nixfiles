@@ -1,20 +1,5 @@
 {
-  "agent_servers": {
-    "claude-acp": {
-      "default_config_options": {
-        "effort": "high",
-        "mode": "bypassPermissions",
-        "model": "opus[1m]"
-      },
-      "favorite_config_option_values": {
-        "model": [
-          "opus[1m]",
-          "claude-opus-4-8"
-        ]
-      },
-      "type": "registry"
-    }
-  },
+  "disable_ai": true,
   "cli_default_open_behavior": "new_window",
   "agent": {
     "dock": "right",
