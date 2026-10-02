@@ -28,6 +28,12 @@
   programs.nh = {
     enable = true;
     flake = "/home/billy/nixfiles";
+    clean = {
+      enable = true;
+      dates = "weekly";
+      # Keep recent generations and at least five rollback options.
+      extraArgs = "--keep 5 --keep-since 14d";
+    };
   };
 
   networking.hostName = "nixos";
