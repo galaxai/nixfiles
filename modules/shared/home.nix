@@ -25,6 +25,7 @@ let
 in
 {
   imports = [
+    ./home-manager/discord.nix
     ./home-manager/terminal.nix
     ./home-manager/fastfetch
     ./home-manager/programming.nix

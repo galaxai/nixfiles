@@ -51,7 +51,6 @@
         imports = [
           ./modules/shared/home.nix
           inputs.plasma-manager.homeModules.plasma-manager
-          ./modules/linux/home-manager/discord.nix
           ./modules/linux/home-manager/ssh.nix
           ./modules/linux/desktops/plasma/plasma.nix
         ];
@@ -65,7 +64,6 @@
         imports = [
           ./modules/shared/home.nix
           ./modules/darwin/home-manager/shell.nix
-          ./modules/darwin/home-manager/discord.nix
         ];
 
         home.username = "apple";
