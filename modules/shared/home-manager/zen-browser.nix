@@ -60,6 +60,7 @@ in
 
     profiles.default.settings = {
       "accessibility.force_disabled" = 1;
+      "dom.webgpu.enabled" = true;
       "gfx.webrender.all" = true;
       "zen.view.use-single-toolbar" = false;
       "zen.view.sidebar-expanded" = false;
