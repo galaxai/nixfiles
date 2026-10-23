@@ -7,7 +7,12 @@ let
 in
 {
   home.packages = [
-    small.t3code
+    (small.t3code.override {
+      # Avoid the broken Electron 44 source build on Linux.
+      t3code-unwrapped = small.t3code.unwrapped.override {
+        electron_44 = small.electron_44-bin;
+      };
+    })
     small.codex
   ];
 }
