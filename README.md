@@ -24,25 +24,30 @@ Install Nix first. For the initial nix-darwin installation, run:
 sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#darwin
 ```
 
-For subsequent rebuilds:
+For subsequent rebuilds, use `nh` (which supports macOS via `nh darwin`):
 
 ```sh
-sudo darwin-rebuild switch --flake .#darwin
+nix run nixpkgs#nh -- darwin switch . --hostname darwin
 ```
+
+If `nh` is installed, you can use `nh darwin switch . --hostname darwin`
+directly. Run these commands from the repository directory; `nh` requests
+elevated privileges when needed.
 
 ### NixOS
-
-```sh
-sudo nixos-rebuild switch --flake .#nixos
-```
-
-After applying this configuration, you can also use `nh`:
 
 ```sh
 nh os switch --hostname nixos
 ```
 
-`nh` defaults to `/home/billy/nixfiles`. Automatic generation cleanup is not
+If `nh` is not installed yet, run it through Nix from the repository directory:
+
+```sh
+nix run nixpkgs#nh -- os switch . --hostname nixos
+```
+
+On NixOS, this configuration installs `nh` and defaults its flake path to
+`/home/billy/nixfiles`. Automatic generation cleanup is not
 enabled, so rollback retention remains manually managed.
 
 ## Format and check
