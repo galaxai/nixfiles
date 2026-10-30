@@ -1,5 +1,13 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
+let
+  small = inputs.nixpkgs-small.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in
 {
   home.packages =
     with pkgs;
@@ -20,10 +28,10 @@
       ffmpeg
     ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
-      ghostty-bin
+      small.ghostty-bin
     ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
-      ghostty
+      small.ghostty
     ];
 
   programs.starship = {

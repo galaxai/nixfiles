@@ -3,8 +3,11 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # Faster-moving channel for tools that release often (t3code, codex).
+    # Faster-moving channel for tools that release often (t3code, codex, Ghostty).
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+
+    delta.url = "github:zed-industries/delta-nix";
+    delta.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
