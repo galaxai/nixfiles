@@ -30,9 +30,9 @@ For subsequent rebuilds, use `nh` (which supports macOS via `nh darwin`):
 nix run nixpkgs#nh -- darwin switch . --hostname darwin
 ```
 
-If `nh` is installed, you can use `nh darwin switch . --hostname darwin`
-directly. Run these commands from the repository directory; `nh` requests
-elevated privileges when needed.
+Once applied, this configuration installs `nh` and defaults its flake path to
+`/Users/apple/nixfiles`, so `nh darwin switch --hostname darwin` works from any
+directory. `nh` requests elevated privileges when needed.
 
 ### NixOS
 
@@ -47,8 +47,10 @@ nix run nixpkgs#nh -- os switch . --hostname nixos
 ```
 
 On NixOS, this configuration installs `nh` and defaults its flake path to
-`/home/billy/nixfiles`. Automatic generation cleanup is not
-enabled, so rollback retention remains manually managed.
+`/home/billy/nixfiles`.
+
+On both systems, `nh clean` runs weekly and keeps at least five generations
+plus anything from the last 14 days.
 
 ## Format and check
 

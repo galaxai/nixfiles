@@ -18,6 +18,17 @@
     tailscale
   ];
   services.tailscale.enable = true;
+
+  programs.nh = {
+    enable = true;
+    flake = "/Users/apple/nixfiles";
+    clean = {
+      enable = true;
+      # Keep recent generations and at least five rollback options.
+      extraArgs = "--keep 5 --keep-since 14d";
+    };
+  };
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
