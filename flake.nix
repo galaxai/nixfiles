@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Keep Discord stable when the main nixpkgs inputs are updated.
+    nixpkgs-discord.url = "github:NixOS/nixpkgs/1c89083e451e891152365b799595cf7790a43325";
     # Faster-moving channel for tools that release often (t3code, codex, Ghostty).
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
@@ -55,6 +57,7 @@
           ./modules/shared/home.nix
           inputs.plasma-manager.homeModules.plasma-manager
           ./modules/linux/home-manager/ssh.nix
+          ./modules/linux/programs/content-creation/obs-home.nix
           ./modules/linux/desktops/plasma/plasma.nix
         ];
 

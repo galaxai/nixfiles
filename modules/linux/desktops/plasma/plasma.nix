@@ -1,5 +1,7 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
+  home.packages = [ pkgs.haruna ];
+
   programs.plasma = {
     enable = true;
 
@@ -36,6 +38,14 @@
         FreeFloating = true;
         historyBehavior = "ImmediateCompletion";
       };
+
+      # Enable Do Not Disturb automatically only while sharing a screen.
+      plasmanotifyrc.DoNotDisturb = {
+        Until = "";
+        WhenFullscreen = false;
+        WhenScreenSharing = true;
+        WhenScreensMirrored = false;
+      };
     };
   };
 
@@ -44,5 +54,6 @@
 
     # Plasma uses the text/plain MIME association as its default editor.
     defaultApplications."text/plain" = lib.mkForce [ "dev.zed.Zed.desktop" ];
+    defaultApplications."video/x-matroska" = [ "org.kde.haruna.desktop" ];
   };
 }

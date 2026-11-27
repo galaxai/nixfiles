@@ -24,7 +24,6 @@ in
       eza
       less
       tmux
-      opencode
       ffmpeg
     ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
@@ -49,8 +48,6 @@ in
     bashrcExtra = ''
       [[ $- != *i* ]] && return
 
-      complete -o default -o bashdefault -A file opencode
-
       if [[ -f ~/keys.sh ]]; then
         source ~/keys.sh
       fi
@@ -70,7 +67,6 @@ in
       alias lt='eza --tree --level=2 --long --icons --git'
 
       export PATH=$HOME/.local/bin:$PATH
-      export PATH=$HOME/.opencode/bin:$PATH
       export PATH=$HOME/.npm-global/bin:$PATH
     '';
   };

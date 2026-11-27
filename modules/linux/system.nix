@@ -5,6 +5,8 @@
     ../../hardware-configuration.nix
     ./programs/_1password.nix
     ./programs/gaming.nix
+    ./programs/content-creation
+    ./programs/computer_use.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
